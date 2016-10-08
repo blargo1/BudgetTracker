@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--ng-app directive goes in html tag-->
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Tracker</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/styles/styles.css">
+    <!-- endinject -->
+</head>
+<!--ng-controller directive goes in body tag-->
+
+<body ng-controller="myController">
+    <div class="container">
+        <div>
+            <div class="col-md-12 jumbotron">
+                <h1 class="text-center">Budget Tracker</h1>
+            </div>
+            <!--Panel 1 Left side goes below here-->
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Income Entries</div>
+                    <div class="panel-body">
+                        <label>Description</label>
+                        <input type="text" class="form-control form-group" ng-model="description">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="number" class="form-control" ng-model="incomeD" label="Amount(to the nearest dollar)">
+                            </div>
+                            <br>
+                            <button class="btn btn-success btn-block" ng-click="addIncome()">+ Add Income</button>
+                        </div>
+                        <div>
+                            <table class="col-md-12">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                                <tr ng-repeat="income in income">
+                                    <td>{{income.description}}</td>
+                                    <td>{{income.incomeD}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Code good above this line-->
+            <!--Panel 2 Right side goes below here-->
+            <div class="col-md-6">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">Expense</div>
+                    <div class="panel-body">
+                        <label>Description</label>
+                        <input type="text" class="form-control form-group" ng-model="description2">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="number" class="form-control" ng-model="incomeD2" label="Amount(to the nearest dollar)">
+                            </div>
+                            <br>
+                            <button class="btn btn-danger btn-block" ng-click="addExpense()">+ Add Expense</button>
+                        </div>
+                        <div>
+                            <table class="col-md-12">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                                <tr ng-repeat="expenses in expense">
+                                    <td>{{expenses.description2}}</td>
+                                    <td>{{expenses.incomeD2}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Panel 3 Centered bottom goes below here-->
+        <div class="col-md-5 col-md-offset-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">Summary</div>
+                <div class="panel-body">
+                    <div>
+                        <table class="col-md-12">
+                            <tr>
+                                <th>Total Income</th>
+                                <th>Total Expense</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalIncome}}</td>
+                                <td>{{totalExpense}}</td>
+                            </tr>
+                            <div class="col-md-6 col-md-offset-3">
+                                <th>Left after spending</th>
+                                <div class="col-md-6 col-md-offset-3">
+                                    <p>{{remainder}}</p>
+                                </div>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!--h1>HEY You</h1-->
+    <!-- inject:js -->
+    <script src="/app/app.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
